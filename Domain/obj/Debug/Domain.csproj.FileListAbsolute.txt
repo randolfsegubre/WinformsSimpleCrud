@@ -1,0 +1,6 @@
+D:\WinformsSimpleCrud\Domain\bin\Debug\Domain.dll
+D:\WinformsSimpleCrud\Domain\bin\Debug\Domain.pdb
+D:\WinformsSimpleCrud\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+D:\WinformsSimpleCrud\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+D:\WinformsSimpleCrud\Domain\obj\Debug\Domain.dll
+D:\WinformsSimpleCrud\Domain\obj\Debug\Domain.pdb

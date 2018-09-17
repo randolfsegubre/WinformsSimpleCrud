@@ -1,0 +1,17 @@
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\WinformsSimpleCrud.exe.config
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\WinformsSimpleCrud.exe
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\WinformsSimpleCrud.pdb
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\Domain.dll
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\Domain.pdb
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.csprojAssemblyReference.cache
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.Form1.resources
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.Properties.Resources.resources
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.csproj.GenerateResource.cache
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.csproj.CoreCompileInputs.cache
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.csproj.CopyComplete
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.exe
+D:\WinformsSimpleCrud\WinformsSimpleCrud\obj\Debug\WinformsSimpleCrud.pdb
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\MoreLinq.dll
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\System.ValueTuple.dll
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\MoreLinq.xml
+D:\WinformsSimpleCrud\WinformsSimpleCrud\bin\Debug\System.ValueTuple.xml
