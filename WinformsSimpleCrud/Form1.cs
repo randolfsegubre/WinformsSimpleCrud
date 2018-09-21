@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using MoreLinq.Extensions;
 
 namespace WinformsSimpleCrud
 {
@@ -59,26 +61,49 @@ namespace WinformsSimpleCrud
             return person;
         }
 
+        private string Validations()
+        {
+            if (string.IsNullOrWhiteSpace(tbFirstName.Text))
+                return "Please Enter First Name!";
+            if (string.IsNullOrWhiteSpace(tbLastName.Text))
+                return "Please Enter Last Name!";
+            if (string.IsNullOrWhiteSpace(tbEmail.Text))
+                return "Please Enter Email!";
+            if (string.IsNullOrWhiteSpace(dtDateOfBirth.Text))
+                return "Please Enter Date Of Birth!";
+            if (!IsValidEmail(tbEmail.Text))
+                return "Email Not Valid!";
+
+            return string.Empty;
+        }
+        
+        private bool IsValidEmail(string email)
+        {
+            try {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch {
+                return false;
+            }
+        }
         private void DisplayToText(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-            rtbDisplay.Text = string.Format(@"You have selected:
 
-ID No : {0}
-Name : {1} {2}
-Email : {3}
-Birthday : {4}
-Age : {5}
-Type of Age : {6}
-Privileges: {7}"
-                , row.Cells["idDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["firstNameDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["lastNameDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["emailDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["dateOfBirthDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["ageDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["typeOfAgeDataGridViewTextBoxColumn"].Value.ToString()
-                , row.Cells["privilegeDataGridViewTextBoxColumn"].Value.ToString());
+            StringBuilder displayData = new StringBuilder("You have selected: ");
+            
+            displayData
+                .Append($"\nD No : " + row.Cells["idDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nName : " + row.Cells["firstNameDataGridViewTextBoxColumn"].Value.ToString() +
+                        row.Cells["lastNameDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nEmail : " + row.Cells["emailDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nBirthday : " + row.Cells["dateOfBirthDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nAge :" + row.Cells["ageDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nType of Age : " + row.Cells["typeOfAgeDataGridViewTextBoxColumn"].Value.ToString())
+                .Append($"\nPrivileges :" + row.Cells["privilegeDataGridViewTextBoxColumn"].Value.ToString());
+
+            rtbDisplay.Text = displayData.ToString();
         }
 
         #endregion Defined Methods
@@ -89,6 +114,12 @@ Privileges: {7}"
         {
             try
             {
+                if (!string.IsNullOrWhiteSpace(this.Validations()))
+                {
+                    MessageBox.Show(Validations(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var count = _personList.Count;
                 var finId = 0;
 
@@ -144,12 +175,19 @@ Privileges: {7}"
         {
             try
             {
+                if (!string.IsNullOrWhiteSpace(this.Validations()))
+                {
+                    MessageBox.Show(Validations(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (currId == 0)
                     return;
 
                 _personList.RemoveAll(x => x.Id == currId);
                 _personList.Add(MapProperties(currId, tbFirstName.Text, tbLastName.Text, tbEmail.Text,
                     dtDateOfBirth.Value));
+
                 this.PopulateGrid();
                 MessageBox.Show("Data successfully updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Clear();
@@ -159,8 +197,6 @@ Privileges: {7}"
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        #endregion Controls
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -187,5 +223,8 @@ Privileges: {7}"
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion Controls
+
+        
     }
 }

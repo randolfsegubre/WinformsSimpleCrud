@@ -37,10 +37,10 @@ namespace Domain
         /// <inheritdoc />
         public Person()
         {
-            Id = 0;
-            FirstName = "";
-            LastName = "";
-            Email = "";
+            Id = int.MinValue;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
             DateOfBirth = DateTime.MinValue;
         }
 

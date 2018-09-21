@@ -16,13 +16,19 @@ namespace Domain
             var senior = Enumerable.Range(70, 200);
 
             if (senior.Contains(age))
+            {
                 return "Senior";
+            } 
             else if (adult.Contains(age))
+            {
                 return "Adult";
-            if (minor.Contains(age))
+            }
+            else if (minor.Contains(age))
+            {
                 return "Minor";
+            }
             else
-                return "";
+                return string.Empty;
         }
 
         #endregion Methods

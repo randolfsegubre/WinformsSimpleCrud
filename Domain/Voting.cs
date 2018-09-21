@@ -1,28 +1,30 @@
 ﻿using System.Linq;
+using System.Text;
+using System.Xml;
 
 namespace Domain
 {
-    public class Voting
+    public class Voting 
     {
         public static string Rights(int age)
         {
-            const int maxValue = 200;
-            var canVote = Enumerable.Range(18, maxValue);
+            
+            var canVote = Enumerable.Range(AgeRange.MinVoteAgeRange, AgeRange.MaxAgeRange);
 
-            var isInfant = Enumerable.Range(0, 3);
+            var isInfant = Enumerable.Range(AgeRange.StartingAgeRage, AgeRange.InfantMaxAgeRange);
 
-            var canRetire = Enumerable.Range(65, maxValue);
+            var canRetire = Enumerable.Range(AgeRange.MinRetireAgeRange, AgeRange.MaxAgeRange);
 
-            string privileges = null;
+            var privileges = new StringBuilder();
 
             if (canVote.Contains(age))
-                privileges += " Can Vote ";
+                privileges.Append(Constants.CanVoteConst) ;
             if (canRetire.Contains(age))
-                privileges += " Can Retire ";
+                privileges.Append(Constants.CanRetireConst);
             if (isInfant.Contains(age) || age < 4)
-                privileges += " Is Infant ";
+                privileges.Append(Constants.IsInfantConst);
 
-            return privileges;
+            return privileges.ToString();
         }
     }
 }
